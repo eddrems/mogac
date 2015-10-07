@@ -39,8 +39,16 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 
-//ROUTES DE CATALOGOS
 
+
+
+
+
+
+// MATENIMIENTO DB Y CATALOGACION
+
+//PROCESO AC
+//tabla: aciud_proceso
 Route::group(['middleware' => ['access_control:24']], function() {
 
 
@@ -55,19 +63,10 @@ Route::group(['middleware' => ['access_control:24']], function() {
     Route::post('catalogos/procesos_ac/grabar_eliminar', 'Catalogos\AtencionCiudadanaProcesosController@grabar_eliminar');
 
 });
+//FIN ----------------------------------------
 
 
-
-
-
-
-
-
-
-
-
-
-Route::group(['middleware' => ['access_control:56']], function() {
+Route::group(['middleware' => ['access_control:23']], function() {
 
     Route::get('catalogos/casos_ac', 'Catalogos\AtencionCiudadanaCasosController@index');
     Route::get('catalogos/casos_ac/buscar_registros_dt','Catalogos\AtencionCiudadanaCasosController@buscar_registros_dt');
@@ -81,6 +80,25 @@ Route::group(['middleware' => ['access_control:56']], function() {
 
 });
 
+
+
+
+Route::group(['middleware' => ['access_control:23']], function() {
+
+    Route::get('catalogos/servicios_ac', 'Catalogos\AtencionCiudadanaServiciosController@index');
+    Route::get('catalogos/servicios_ac/buscar_registros_dt','Catalogos\AtencionCiudadanaServiciosController@buscar_registros_dt');
+
+    Route::get('catalogos/servicios_ac/crear', 'Catalogos\AtencionCiudadanaServiciosController@crear');
+    Route::post('catalogos/servicios_ac/grabar_nuevo', 'Catalogos\AtencionCiudadanaServiciosController@grabar_nuevo');
+    Route::get('catalogos/servicios_ac/editar/{id}', 'Catalogos\AtencionCiudadanaServiciosController@editar');
+    Route::post('catalogos/servicios_ac/grabar_actualizar', 'Catalogos\AtencionCiudadanaServiciosController@grabar_actualizar');
+    Route::get('catalogos/servicios_ac/eliminar/{id}', 'Catalogos\AtencionCiudadanaServiciosController@eliminar');
+    Route::post('catalogos/servicios_ac/grabar_eliminar', 'Catalogos\AtencionCiudadanaServiciosController@grabar_eliminar');
+
+});
+
+
+//FIN -------------------- MATENIMIENTO DB Y CATALOGACION -----------------------
 
 
 

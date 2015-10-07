@@ -10,6 +10,7 @@ class aciudServicio extends Model {
     protected $table = 'aciud_cat_servicio';
     protected $primaryKey = 'id_servicio';
     public $timestamps = false;
+    protected $fillable = ['denominacion'];
 
 
 

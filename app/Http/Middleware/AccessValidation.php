@@ -41,9 +41,9 @@ class AccessValidation {
                 //return redirect()->guest('auth/login');
             }
         }
-
-        if($request->user()->validar_acceso($identificador_acceso) != 1)
-            return redirect()->guest('/inicio');
+//
+//        if($request->user()->validar_acceso($identificador_acceso) != 1)
+//            return redirect()->guest('/inicio');
 
 
         return $next($request);
