@@ -17,7 +17,7 @@ class aciudServicioRepository extends  Repository  {
 
     public function buscar_todos_dt()
     {
-        return \DB::table('aciud_cat_servicio')
+        return \DB::table('repo_servicios')
             ->select(
                 'aciud_cat_servicio.id_servicio',
                 'aciud_cat_servicio.denominacion'

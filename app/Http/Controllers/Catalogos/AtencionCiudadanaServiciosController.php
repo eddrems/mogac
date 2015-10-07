@@ -52,14 +52,10 @@ class AtencionCiudadanaServiciosController extends Controller {
                 . '</div>';
             })
             ->searchColumns(
-                'aciud_cat_servicio.denominacion',
-                'aciud_cat_caso.id_caso',
-                'aciud_cat_caso.denominacion'
+                'denominacion'
             )
             ->orderColumns(
-                'aciud_cat_servicio.denominacion',
-                'aciud_cat_caso.id_caso',
-                'aciud_cat_caso.denominacion'
+                'denominacion'
             )
             ->make();
     }
