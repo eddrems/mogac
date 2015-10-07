@@ -1,0 +1,21 @@
+﻿.command-bar {        
+    position:absolute;
+    width:95%;
+}
+
+.command-bar-fixed {
+    position:fixed;        
+}
+
+.mainContent {
+    padding-top:50px;
+}
+
+.container-fluid {
+    padding-left:0;
+    padding-right:0;
+}
+
+@media (min-width: 768px) and (max-width: 979px) { .command-bar-fixed { position:absolute; } }
+/*@@media (max-width: 979px) { .command-bar-fixed { position:absolute; } }*/
+@media (min-width: 980px) { .command-bar-fixed { position: fixed; } .mainContent { padding-top:50px; } }

@@ -1,0 +1,21 @@
+.dashicon {
+     width: 110px; float: left; height: 120px; background: #ffffff; margin-right: 10px; margin-bottom: 10px; position: relative;  
+     background: #ffffff; 
+     border:1px solid #e2e2e2;
+     padding-bottom:5px;
+}
+.dashicon.hovered { 
+    background: #5c677c; /*D0D0D0*/
+    border-color:#349AC6;
+    /*-moz-box-shadow: 0 0 6px #ccc;
+    -webkit-box-shadow: 0 0 6px #ccc;
+    box-shadow: 0 0 6px #ccc;*/ 
+    color: white; 
+    cursor: pointer; 
+
+}
+
+.dashicon .dashiconname { font-weight: bold; width: 100%; position: absolute; bottom: 2px; text-align: center; font-size: 11px; line-height: 11px; }
+.dashicon .dashicondesc { font-weight: normal; font-size: 10px; line-height: 10px; }
+.dashicon .dashiconimage { width: 100%; text-align: center; }
+.dashicon .dashiconimage img { height: 60px; margin-top: 10px; }
