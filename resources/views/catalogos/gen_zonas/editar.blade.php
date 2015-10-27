@@ -16,7 +16,7 @@
     <section class="vbox">
         <header class="header b-b bg-white hidden-print">
             <a href="javascript:void(0);" class="btn btn-warning btn-sm  pull-right" style="margin-right:5px; " onclick="$('#frmMain').submit();"><i class="icon-ok icon-white"></i> Actualizar</a>
-            <a href="{{ URL::to('catalogos/zonas') }}" class="btn btn-default btn-sm  pull-right" style="margin-right:5px; "><i class="icon-share-alt icon-black"></i> Cancelar</a>
+            <a href="{{ URL::to('catalogos/zonas') }}" class="btn btn-default btn-sm  pull-right" style="margin-right:5px; "><i class="icon-share-alt icon-black"></i> Regresar</a>
             <p style="font-size: medium;"><i class="fa fa-database"></i> Catálogos / <strong>Zonas</strong> / Editar </p>
         </header>
 

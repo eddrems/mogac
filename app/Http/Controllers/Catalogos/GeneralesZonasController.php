@@ -105,12 +105,12 @@ class GeneralesZonasController extends Controller {
         return view('catalogos.gen_zonas.editar')->with('registro', $registro);
     }
 
-    public function grabar_actualizar(Requests\Catalogos\aciud_cat_servicioRequest  $request)
+    public function grabar_actualizar(Requests\Catalogos\div_zonaRequest  $request)
     {
         if($this->repo_main->update($request->only(['codigoSemplades','denominacion','denominacion_institucional','composicion','logo_certificacion','numero_certificacion','pie_pagina_certificacion','logo_top','logo_left','numero_top','numero_width','logo_scale']), Crypt::decrypt($request->id), 'id_zona'))
         {
             Toastr::success($this->repo_main->mensajes_actualizacion, $title = 'Confirmación:', $options = []);
-            return redirect('catalogos/zonas');
+            return redirect('catalogos/zonas/editar'.'/'.$request->id);
         }
         else
         {

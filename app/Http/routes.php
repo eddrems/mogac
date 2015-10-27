@@ -92,7 +92,7 @@ Route::group(['middleware' => ['access_control:22']], function() {
 
 
 //tabla: div_zona
-Route::group(['middleware' => ['access_control:22']], function() {
+Route::group(['middleware' => ['access_control:33']], function() {
 
     Route::get('catalogos/zonas', 'Catalogos\GeneralesZonasController@index');
     Route::get('catalogos/zonas/buscar_registros_dt','Catalogos\GeneralesZonasController@buscar_registros_dt');
@@ -104,7 +104,18 @@ Route::group(['middleware' => ['access_control:22']], function() {
     Route::post('catalogos/zonas/grabar_eliminar', 'Catalogos\GeneralesZonasController@grabar_eliminar');
 });
 
+//tabla: div_distrito
+Route::group(['middleware' => ['access_control:34']], function() {
 
+    Route::get('catalogos/distritos', 'Catalogos\GeneralesDistritosController@index');
+    Route::get('catalogos/distritos/buscar_registros_dt','Catalogos\GeneralesDistritosController@buscar_registros_dt');
+    Route::get('catalogos/distritos/crear', 'Catalogos\GeneralesDistritosController@crear');
+    Route::post('catalogos/distritos/grabar_nuevo', 'Catalogos\GeneralesDistritosController@grabar_nuevo');
+    Route::get('catalogos/distritos/editar/{id}', 'Catalogos\GeneralesDistritosController@editar');
+    Route::post('catalogos/distritos/grabar_actualizar', 'Catalogos\GeneralesDistritosController@grabar_actualizar');
+    Route::get('catalogos/distritos/eliminar/{id}', 'Catalogos\GeneralesDistritosController@eliminar');
+    Route::post('catalogos/distritos/grabar_eliminar', 'Catalogos\GeneralesDistritosController@grabar_eliminar');
+});
 
 
 

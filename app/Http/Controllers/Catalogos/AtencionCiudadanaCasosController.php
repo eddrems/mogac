@@ -109,7 +109,7 @@ class AtencionCiudadanaCasosController extends Controller {
         if($this->repo_casos->update($request->only(['id_servicio', 'denominacion']), Crypt::decrypt($request->id), 'id_caso'))
         {
             Toastr::success($this->repo_casos->mensajes_actualizacion, $title = 'Confirmación:', $options = []);
-            return redirect('catalogos/casos_ac');
+            return redirect('catalogos/casos_ac/editar'.'/'.$request->id);
         }
         else
         {

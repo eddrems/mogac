@@ -10,6 +10,7 @@ class divDistrito extends Model {
 
     protected $table = 'div_distrito';
     protected $primaryKey = 'id_distrito';
+    protected $fillable = ['id_zona','codigoSemplades','denominacion','denominacion_institucional','composicion','id_parroquia','id_circuito','direccion','saltar_numeracion'];
     public $timestamps = false;
 
 

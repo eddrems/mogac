@@ -139,7 +139,7 @@ class AtencionCiudadanaProcesosController extends Controller {
         if($this->repo_procesos->update($request->only(['id_departamento','id_caso','denominacion','base_legal','proposito','tiempo','requiere_caso_snap','incluir_matriz_snap','activo_recepcion']), Crypt::decrypt($request->id), 'id_proceso'))
         {
             Toastr::success($this->repo_procesos->mensajes_actualizacion, $title = 'Confirmación:', $options = []);
-            return redirect('catalogos/procesos_ac');
+            return redirect('catalogos/procesos_ac/editar'.'/'.$request->id);
         }
         else
         {

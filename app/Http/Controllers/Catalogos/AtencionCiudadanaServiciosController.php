@@ -96,7 +96,7 @@ class AtencionCiudadanaServiciosController extends Controller {
         if($this->repo_servicios->update($request->only(['denominacion']), Crypt::decrypt($request->id), 'id_servicio'))
         {
             Toastr::success($this->repo_servicios->mensajes_actualizacion, $title = 'Confirmación:', $options = []);
-            return redirect('catalogos/servicios_ac');
+            return redirect('catalogos/servicios_ac/editar'.'/'.$request->id);
         }
         else
         {
