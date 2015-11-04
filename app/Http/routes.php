@@ -117,6 +117,19 @@ Route::group(['middleware' => ['access_control:34']], function() {
     Route::post('catalogos/distritos/grabar_eliminar', 'Catalogos\GeneralesDistritosController@grabar_eliminar');
 });
 
+//tabla: div_circuito
+Route::group(['middleware' => ['access_control:34']], function() {
+
+    Route::get('catalogos/circuitos', 'Catalogos\GeneralesCircuitosController@index');
+    Route::get('catalogos/circuitos/buscar_registros_dt','Catalogos\GeneralesCircuitosController@buscar_registros_dt');
+    Route::get('catalogos/circuitos/crear', 'Catalogos\GeneralesCircuitosController@crear');
+    Route::post('catalogos/circuitos/grabar_nuevo', 'Catalogos\GeneralesCircuitosController@grabar_nuevo');
+    Route::get('catalogos/circuitos/editar/{id}', 'Catalogos\GeneralesCircuitosController@editar');
+    Route::post('catalogos/circuitos/grabar_actualizar', 'Catalogos\GeneralesCircuitosController@grabar_actualizar');
+    Route::get('catalogos/circuitos/eliminar/{id}', 'Catalogos\GeneralesCircuitosController@eliminar');
+    Route::post('catalogos/circuitos/grabar_eliminar', 'Catalogos\GeneralesCircuitosController@grabar_eliminar');
+});
+
 
 
 
