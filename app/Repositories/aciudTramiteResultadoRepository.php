@@ -13,5 +13,14 @@ class aciudTramiteResultadoRepository extends  Repository  {
         return 'App\Models\aciudTramiteResultado';
     }
 
+    public function buscar_todos_dt()
+    {
+        return \DB::table('aciud_tramite_resultado')
+            ->select(
+                'id_tramite_resultado',
+                'denominacion',
+                'requiere_observaciones'
+            );
+    }
 
 }

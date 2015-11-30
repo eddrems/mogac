@@ -53,6 +53,10 @@
             <small>
                 Ministerio de Educación  |  Av. Amazonas N34-451 y Av. Atahualpa  |  Código Pstal 170515 / Quito - Ecuador  |  Teléfono: 593-2-396-1300 / 1400 / 1500  |  1800 - EDUCACION
             </small>
+            <br>
+            <small style="color:#f2f4f8;">
+                Realizado Por: Edisson R. Mendieta S. - Pedro E. Crespo B. (01D01) || Jimy J. Vera A. - Yini Gallardo (13D07)
+            </small>
         </p>
     </div>
 </footer>

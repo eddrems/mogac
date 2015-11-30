@@ -16,8 +16,8 @@
     <section class="vbox">
         <header class="header b-b bg-white hidden-print">
             <a href="javascript:void(0);" class="btn btn-warning btn-sm  pull-right" style="margin-right:5px; " onclick="$('#frmMain').submit();"><i class="icon-ok icon-white"></i> Actualizar</a>
-            <a href="{{ URL::to('catalogos/distritos') }}" class="btn btn-default btn-sm  pull-right" style="margin-right:5px; "><i class="icon-share-alt icon-black"></i> Regresar</a>
-            <p style="font-size: medium;"><i class="fa fa-database"></i> Catálogos / <strong>Distritos</strong> / Editar</p>
+            <a href="{{ URL::to('catalogos/circuitos') }}" class="btn btn-default btn-sm  pull-right" style="margin-right:5px; "><i class="icon-share-alt icon-black"></i> Regresar</a>
+            <p style="font-size: medium;"><i class="fa fa-database"></i> Catálogos / <strong>Circuitos</strong> / Editar</p>
         </header>
 
         <section class="scrollable wrapper">
@@ -25,18 +25,18 @@
                 <div class="col-lg-12">
 
                     <section class="panel panel-warning">
-                        <header class="panel-heading font-bold"> Editar: {!! $registro->denominacion !!}</header>
+                        <header class="panel-heading font-bold"> Editar: {!! $registro->codigoSemplades !!}</header>
                         <div class="panel-body">
                             <div class="bs-example form-horizontal">
 
-                                {!! Form::open(array('url' => 'catalogos/distritos/grabar_actualizar', 'id' => 'frmMain')) !!}
+                                {!! Form::open(array('url' => 'catalogos/circuitos/grabar_actualizar', 'id' => 'frmMain')) !!}
 
-                                {!! Form::hidden('id', Crypt::encrypt($registro->id_distrito)) !!}
+                                {!! Form::hidden('id', Crypt::encrypt($registro->id_circuito)) !!}
 
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label">Zona:</label>
+                                    <label class="col-lg-2 control-label">Distrito / Zona:</label>
                                     <div class="col-lg-10">
-                                        {!! Form::select('id_zona', $zonas, Input::old('id_zona') ? Input::old('id_zona') : $registro->id_zona, array('class' => 'form-control', 'data-required' => 'true', 'id' => 'id_zona')) !!}
+                                        {!! Form::select('id_distrito', $distritos, Input::old('id_distrito') ? Input::old('id_distrito') : $registro->id_distrito, array('class' => 'form-control', 'data-required' => 'true', 'id' => 'id_distrito')) !!}
 
                                     </div>
                                 </div>
@@ -49,49 +49,11 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label">Denominaci&oacute;n:</label>
-                                    <div class="col-lg-10">
-                                        {!! Form::text('denominacion', Input::old('denominacion') ? Input::old('denominacion') : $registro->denominacion, array('class' => 'form-control', 'data-required' => 'true')) !!}
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-lg-2 control-label">Denominaci&oacute;n Institucional:</label>
-                                    <div class="col-lg-10">
-                                        {!! Form::text('denominacion_institucional', Input::old('denominacion_institucional') ? Input::old('denominacion_institucional') : $registro->denominacion_institucional, array('class' => 'form-control', 'data-required' => 'true')) !!}
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
                                     <label class="col-lg-2 control-label">Composici&oacute;n:</label>
                                     <div class="col-lg-10">
                                         {!! Form::textarea('composicion', Input::old('composicion') ? Input::old('composicion') : $registro->composicion, array('class' => 'form-control', 'rows' => '4', 'data-required' => 'true')) !!}
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label class="col-lg-2 control-label">Parroquia:</label>
-                                    <div class="col-lg-10">
-                                        {!! Form::select('id_parroquia', $parroquias, Input::old('id_parroquia') ? Input::old('id_parroquia') : $registro->id_parroquia, array('class' => 'form-control', 'data-required' => 'true', 'id' => 'id_parroquia')) !!}
-
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-lg-2 control-label">Circuito:</label>
-                                    <div class="col-lg-10">
-                                        {!! Form::select('id_circuito', $circuitos, Input::old('id_circuito') ? Input::old('id_circuito') : $registro->id_circuito, array('class' => 'form-control',  'id' => 'id_circuito')) !!}
-
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-lg-2 control-label">Direcci&oacute;n:</label>
-                                    <div class="col-lg-10">
-                                        {!! Form::text('direccion', Input::old('composicion') ? Input::old('direccion') : $registro->direccion, array('class' => 'form-control', 'data-required' => 'true')) !!}
-                                    </div>
-                                </div>
-
                                 {!! Form::close()!!}
 
                             </div>
@@ -132,8 +94,7 @@
 
             $('#frmMain').parsley();
 
-            $('#id_zona', this).chosen('destroy').chosen();
-            $('#id_parroquia    ', this).chosen('destroy').chosen();
+            $('#id_distrito', this).chosen('destroy').chosen();
 
 
         });

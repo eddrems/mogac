@@ -9,6 +9,7 @@ class configRolModulo extends Model {
 
     protected $table = 'config_rol_modulo';
     protected $primaryKey = 'id_rol_modulo';
+    protected $fillable = ['id_rol', 'id_modulo'];
     public $timestamps = false;
 
 

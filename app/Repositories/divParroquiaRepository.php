@@ -26,4 +26,17 @@ class divParroquiaRepository extends  Repository  {
             ->lists('ruta', 'id_parroquia');
     }
 
+
+    public function buscar_todos_dt($id_ciudad)
+    {
+        return \DB::table('div_parroquia')
+            ->where('id_ciudad', $id_ciudad)
+            ->orderBy('denominacion')
+            ->select(
+                'id_parroquia',
+                'denominacion',
+                'codigo'
+            );
+    }
+
 }

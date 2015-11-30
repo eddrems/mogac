@@ -75,7 +75,8 @@ class AtencionCiudadanaProcesosController extends Controller {
             {
                 return  '<div class="btn-group">'
                 . '<a href="' . url('catalogos/procesos_ac/editar') .'/'. Crypt::encrypt($model->id_proceso) .'" class="btn btn-default btn-xs btn-mini "><i class="fa fa-pencil"></i></a>'
-                . '<a href="' . url('catalogos/procesos_ac/eliminar') .'/'. Crypt::encrypt($model->id_proceso) .'" class="btn btn-dark btn-xs btn-mini"><i class="fa fa-trash-o"></i></a>&nbsp;'
+                . '<a href="' . url('catalogos/procesos_ac/eliminar') .'/'. Crypt::encrypt($model->id_proceso) .'" class="btn btn-danger btn-xs btn-mini"><i class="fa fa-trash-o"></i></a>'
+                . '<a href="' . url('catalogos/procesos_ac/requisitos/listar') .'/'. Crypt::encrypt($model->id_proceso) .'" class="btn btn-primary btn-xs btn-mini" ><i class="fa fa-bars"></i></a>'
                 . '</div>';
             })
             ->searchColumns(

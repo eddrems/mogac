@@ -15,10 +15,10 @@
     </div>
     <!-- Loading Panel -->
 
-    <section class="vbox">
+    <section class="vbox" id="modulo">
         <header class="header b-b bg-white hidden-print">
             <a href="{{ url('catalogos/procesos_ac/crear') }}" class="btn btn-primary btn-sm  pull-right" style="margin-right:5px; " >Nuevo Registro</a>
-            <p style="font-size: medium;"><i class="fa fa-database"></i> Catálogos / <strong>Procesos de Atención Ciudadana</strong></p>
+            <p style="font-size: medium;" v-on:click="visualizar_requerimientos()"><i class="fa fa-database"></i> Catálogos / <strong>Procesos de Atención Ciudadana</strong></p>
         </header>
 
         <section class="scrollable wrapper">
@@ -62,6 +62,8 @@
 @section('Dependencias_JS')
 
     <script src="{{ asset('frontend/assets/todo/js/datatables/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+
+
 
 @endsection
 

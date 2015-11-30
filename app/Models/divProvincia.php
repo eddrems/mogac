@@ -10,6 +10,7 @@ class divProvincia extends Model {
 
     protected $table = 'div_provincia';
     protected $primaryKey = 'id_provincia';
+    protected $fillable = ['id_provincia', 'denominacion','codigo'];
     public $timestamps = false;
 
 

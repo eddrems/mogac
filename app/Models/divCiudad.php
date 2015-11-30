@@ -10,6 +10,7 @@ class divCiudad extends Model {
 
     protected $table = 'div_ciudad';
     protected $primaryKey = 'id_ciudad';
+    protected $fillable = ['id_ciudad', 'id_provincia','denominacion','codigo'];
     public $timestamps = false;
 
 

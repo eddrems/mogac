@@ -48,7 +48,7 @@
                 }
             },
             "bAutoWidth": false,
-            "aoColumns": [{ "sWidth": "270px" }, { "sWidth": "auto" }, { "sWidth": "80px" }, { "sWidth": "75px" }, { "sWidth": "75px" }, { "sWidth": "90px" }],
+            "aoColumns": [{ "sWidth": "270px" }, { "sWidth": "auto" }, { "sWidth": "80px" }, { "sWidth": "75px" }, { "sWidth": "75px" }, { "sWidth": "130px" }],
             "aoColumnDefs": [
                 { 'bSortable': false, 'aTargets': [ 2,3,4,5 ] }
             ]

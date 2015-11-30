@@ -1,9 +1,7 @@
 <?php namespace App\Http\Controllers\Catalogos;
 
 
-use App\Repositories\divDistritoRepository as repoDistritos;
-use App\Repositories\divZonaRepository as repoZonas;
-use App\Repositories\divParroquiaRepository as repoParroquias;
+use App\Repositories\divDistritoRepository as repoDistritos;;
 use App\Repositories\divCircuitoRepository as repoCircuitos;
 
 use App\Http\Requests\Catalogos;
@@ -25,15 +23,11 @@ class GeneralesCircuitosController extends Controller {
 
 
     private $repo_main;
-    private $repo_zonas;
-    private $repo_parroquias;
     private $repo_distritos;
 
-    public function __construct(repoDistritos $repo_distritos, repoZonas $repo_zonas, repoParroquias $repo_parroquias, repoCircuitos $repo_main) {
+    public function __construct(repoDistritos $repo_distritos, repoCircuitos $repo_main) {
 
         $this->repo_main = $repo_main;
-        $this->repo_zonas = $repo_zonas;
-        $this->repo_parroquias = $repo_parroquias;
         $this->repo_distritos = $repo_distritos;
     }
 
@@ -67,15 +61,15 @@ class GeneralesCircuitosController extends Controller {
             ->addColumn('commands',function($model)
             {
                 return  '<div class="btn-group">'
-                . '<a href="' . url('catalogos/distritos/editar') .'/'. Crypt::encrypt($model->id_circuito) .'" class="btn btn-default btn-xs btn-mini "><i class="fa fa-pencil"></i></a>'
-                . '<a href="' . url('catalogos/distritos/eliminar') .'/'. Crypt::encrypt($model->id_circuito) .'" class="btn btn-dark btn-xs btn-mini"><i class="fa fa-trash-o"></i></a>&nbsp;'
+                . '<a href="' . url('catalogos/circuitos/editar') .'/'. Crypt::encrypt($model->id_circuito) .'" class="btn btn-default btn-xs btn-mini "><i class="fa fa-pencil"></i></a>'
+                . '<a href="' . url('catalogos/circuitos/eliminar') .'/'. Crypt::encrypt($model->id_circuito) .'" class="btn btn-dark btn-xs btn-mini"><i class="fa fa-trash-o"></i></a>&nbsp;'
                 . '</div>';
             })
             ->searchColumns(
                 'div_circuito.id_circuito',
                 'div_circuito.id_distrito',
                 'div_circuito.codigoSemplades',
-                'div_distrito.composicion',
+                'div_circuito.composicion',
                 'div_distrito.denominacion',
                 'div_zona.denominacion'
             )
@@ -83,7 +77,7 @@ class GeneralesCircuitosController extends Controller {
                 'div_circuito.id_circuito',
                 'div_circuito.id_distrito',
                 'div_circuito.codigoSemplades',
-                'div_distrito.composicion',
+                'div_circuito.composicion',
                 'div_distrito.denominacion',
                 'div_zona.denominacion'
             )
@@ -93,25 +87,23 @@ class GeneralesCircuitosController extends Controller {
 
     public function crear()
     {
-        $parroquias = $this->repo_parroquias->bucar_parroquias_ruta_completa();
-        $circuitos = $this->repo_circuitos->bucar_cicuitos_por_distrito_lists(0);
-        $zonas = $this->repo_zonas->pushCriteria(new ZonasOrdenAsc())->lists('denominacion_institucional', 'id_zona');
+        $distritos = $this->repo_distritos->buscar_distritos_con_zona_lists();
 
-        return view('catalogos.gen_circuitos.crear', ['parroquias' => $parroquias, 'circuitos' => $circuitos, 'zonas' => $zonas]);
+        return view('catalogos.gen_circuitos.crear', ['distritos' => $distritos]);
     }
 
-    public function grabar_nuevo(Requests\Catalogos\div_distritoRequest $request)
+    public function grabar_nuevo(Requests\Catalogos\div_circuitoRequest $request)
     {
 
-        if($this->repo_main->create($request->only(['id_zona', 'codigoSemplades', 'denominacion', 'denominacion_institucional', 'composicion', 'id_parroquia', 'direccion'])))
+        if($this->repo_main->create($request->only(['id_distrito', 'codigoSemplades', 'composicion'])))
         {
             Toastr::success($this->repo_main->mensajes_ingreso, $title = 'Confirmación:', $options = []);
-            return redirect('catalogos/distritos');
+            return redirect('catalogos/circuitos');
         }
         else
         {
             Toastr::error('Ha ocurrido un error', $title = 'Error:', $options = []);
-            return redirect('catalogos/distritos/crear')->withInput();
+            return redirect('catalogos/circuitos/crear')->withInput();
         }
     }
 
@@ -119,25 +111,22 @@ class GeneralesCircuitosController extends Controller {
     public function editar($id)
     {
         $registro = $this->repo_main->find(Crypt::decrypt($id));
-        $parroquias = $this->repo_parroquias->bucar_parroquias_ruta_completa();
-        $circuitos = $this->repo_circuitos->bucar_cicuitos_por_distrito_lists($registro->id_distrito);
-        $zonas = $this->repo_zonas->pushCriteria(new ZonasOrdenAsc())->lists('denominacion_institucional', 'id_zona');
+        $distritos = $this->repo_distritos->buscar_distritos_con_zona_lists();
 
-
-        return view('catalogos.gen_circuitos.editar', ['parroquias' => $parroquias, 'circuitos' => $circuitos, 'zonas' => $zonas])->with('registro', $registro);
+        return view('catalogos.gen_circuitos.editar', ['distritos' => $distritos])->with('registro', $registro);
     }
 
-    public function grabar_actualizar(Requests\Catalogos\div_distritoRequest  $request)
+    public function grabar_actualizar(Requests\Catalogos\div_circuitoRequest  $request)
     {
-        if($this->repo_main->update($request->only(['id_zona', 'codigoSemplades', 'denominacion', 'denominacion_institucional', 'composicion', 'id_parroquia', 'id_circuito', 'direccion']), Crypt::decrypt($request->id), 'id_distrito'))
+        if($this->repo_main->update($request->only(['id_distrito', 'codigoSemplades', 'composicion']), Crypt::decrypt($request->id), 'id_circuito'))
         {
             Toastr::success($this->repo_main->mensajes_actualizacion, $title = 'Confirmación:', $options = []);
-            return redirect('catalogos/distritos/editar'.'/'.$request->id);
+            return redirect('catalogos/circuitos/editar'.'/'.$request->id);
         }
         else
         {
             Toastr::error('Ha ocurrido un error', $title = 'Error:', $options = []);
-            return redirect('catalogos/distritos/editar'.'/'.$request->id)->withInput();
+            return redirect('catalogos/circuitos/editar'.'/'.$request->id)->withInput();
         }
     }
 
@@ -155,11 +144,11 @@ class GeneralesCircuitosController extends Controller {
             $this->repo_main->delete(Crypt::decrypt($request->id));
 
             Toastr::success($this->repo_main->mensajes_eliminacion, $title = 'Confirmación:', $options = []);
-            return redirect('catalogos/distritos');
+            return redirect('catalogos/circuitos');
         }
         catch(\Exception $e) {
             Toastr::error($e->getMessage(), $title = 'Error:', $options = []);
-            return redirect('catalogos/distritos/eliminar'.'/'.$request->id)->withInput();
+            return redirect('catalogos/circuitos/eliminar'.'/'.$request->id)->withInput();
         }
     }
 

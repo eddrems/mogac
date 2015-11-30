@@ -32,12 +32,25 @@ class divCircuitoRepository extends  Repository  {
                 'div_circuito.id_circuito',
                 'div_circuito.id_distrito',
                 'div_circuito.codigoSemplades',
-                'div_distrito.composicion',
+                'div_circuito.composicion',
                 'div_distrito.denominacion as distrito',
                 'div_zona.denominacion as zona'
             );
     }
 
+    public function generar_lista_con_agrupador_distritos($valor = null)
+    {
 
+        \Form::macro('selectOpt', function(\ArrayAccess $collection, $name, $groupBy, $labelBy = 'name', $valueBy = 'id', $value = null, $attributes = array()) {
+            $select_optgroup_arr = [];
+            foreach ($collection as $item)
+            {
+                $select_optgroup_arr[$item->$groupBy][$item->$valueBy] = $item->$labelBy;
+            }
+            return \Form::select($name, $select_optgroup_arr, $value, $attributes);
+        });
+
+        return \Form::selectOpt($this->model->orderBy('codigoSemplades')->get(), 'id_circuito', 'distrito', 'codigoSemplades', 'id_circuito', $valor, array('class' => 'form-control', 'data-required' => 'true', 'id' => 'id_circuito'));
+    }
 
 }

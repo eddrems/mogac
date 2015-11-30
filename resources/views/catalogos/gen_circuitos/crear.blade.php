@@ -16,8 +16,8 @@
     <section class="vbox">
         <header class="header b-b bg-white hidden-print">
             <a href="javascript:void(0);" class="btn btn-warning btn-sm  pull-right" style="margin-right:5px; " onclick="$('#frmMain').submit();"><i class="icon-ok icon-white"></i> Ingresar</a>
-            <a href="{{ URL::to('catalogos/distritos') }}" class="btn btn-default btn-sm  pull-right" style="margin-right:5px; "><i class="icon-share-alt icon-black"></i> Cancelar</a>
-            <p style="font-size: medium;"><i class="fa fa-database"></i> Catálogos / <strong>Distritos</strong> / Crear</p>
+            <a href="{{ URL::to('catalogos/circuitos') }}" class="btn btn-default btn-sm  pull-right" style="margin-right:5px; "><i class="icon-share-alt icon-black"></i> Cancelar</a>
+            <p style="font-size: medium;"><i class="fa fa-database"></i> Catálogos / <strong>Circuitos</strong> / Crear</p>
         </header>
 
         <section class="scrollable wrapper">
@@ -29,12 +29,12 @@
                         <div class="panel-body">
                             <div class="bs-example form-horizontal">
 
-                                {!! Form::open(array('url' => 'catalogos/distritos/grabar_nuevo', 'id' => 'frmMain')) !!}
+                                {!! Form::open(array('url' => 'catalogos/circuitos/grabar_nuevo', 'id' => 'frmMain')) !!}
 
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label">Zona:</label>
+                                    <label class="col-lg-2 control-label">Distrito / Zona:</label>
                                     <div class="col-lg-10">
-                                        {!! Form::select('id_zona', $zonas, Input::old('id_zona') ? Input::old('id_zona') : null, array('class' => 'form-control', 'data-required' => 'true', 'id' => 'id_zona')) !!}
+                                        {!! Form::select('id_distrito', $distritos, Input::old('id_distrito') ? Input::old('id_distrito') : null, array('class' => 'form-control', 'data-required' => 'true', 'id' => 'id_distrito')) !!}
 
                                     </div>
                                 </div>
@@ -47,42 +47,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label">Denominaci&oacute;n:</label>
-                                    <div class="col-lg-10">
-                                        {!! Form::text('denominacion', Input::old('denominacion') ? Input::old('denominacion') : '', array('class' => 'form-control', 'data-required' => 'true')) !!}
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-lg-2 control-label">Denominaci&oacute;n Institucional:</label>
-                                    <div class="col-lg-10">
-                                        {!! Form::text('denominacion_institucional', Input::old('denominacion_institucional') ? Input::old('denominacion_institucional') : '', array('class' => 'form-control', 'data-required' => 'true')) !!}
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
                                     <label class="col-lg-2 control-label">Composici&oacute;n:</label>
                                     <div class="col-lg-10">
                                         {!! Form::textarea('composicion', Input::old('composicion') ? Input::old('composicion') : '', array('class' => 'form-control', 'rows' => '4', 'data-required' => 'true')) !!}
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="col-lg-2 control-label">Parroquia:</label>
-                                    <div class="col-lg-10">
-                                        {!! Form::select('id_parroquia', $parroquias, Input::old('id_parroquia') ? Input::old('id_parroquia') : null, array('class' => 'form-control', 'data-required' => 'true', 'id' => 'id_parroquia')) !!}
-
-                                    </div>
-                                </div>
-
-
-
-                                <div class="form-group">
-                                    <label class="col-lg-2 control-label">Direcci&oacute;n:</label>
-                                    <div class="col-lg-10">
-                                        {!! Form::text('direccion', Input::old('composicion') ? Input::old('direccion') : '', array('class' => 'form-control', 'data-required' => 'true')) !!}
-                                    </div>
-                                </div>
 
                                 {!! Form::close()!!}
 
@@ -124,8 +94,7 @@
 
             $('#frmMain').parsley();
 
-            $('#id_zona', this).chosen('destroy').chosen();
-            $('#id_parroquia    ', this).chosen('destroy').chosen();
+            $('#id_distrito', this).chosen('destroy').chosen();
 
 
         });

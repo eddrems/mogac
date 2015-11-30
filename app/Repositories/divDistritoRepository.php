@@ -32,4 +32,15 @@ class divDistritoRepository extends  Repository  {
             );
     }
 
+
+    public function buscar_distritos_con_zona_lists()
+    {
+        return \DB::table('div_distrito')
+            ->join('div_zona', 'div_distrito.id_zona', '=', 'div_zona.id_zona')
+            ->orderBy('div_zona.denominacion')
+            ->orderBy('div_distrito.codigoSemplades')
+            ->select(\DB::raw('CONCAT(div_zona.denominacion, ": ", div_distrito.denominacion) AS ruta'), 'id_distrito')
+            ->lists('ruta', 'id_distrito');
+    }
+
 }

@@ -14,4 +14,14 @@ class divProvinciaRepository extends  Repository  {
     }
 
 
+    public function buscar_todos_dt()
+    {
+        return \DB::table('div_provincia')
+            ->orderBy('denominacion')
+            ->select(
+                'id_provincia',
+                'denominacion',
+                'codigo'
+            );
+    }
 }

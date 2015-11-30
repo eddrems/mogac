@@ -125,7 +125,7 @@
             $('#frmMain').parsley();
 
             $('#id_zona', this).chosen('destroy').chosen();
-            $('#id_parroquia    ', this).chosen('destroy').chosen();
+            $('#id_parroquia', this).chosen('destroy').chosen();
 
 
         });

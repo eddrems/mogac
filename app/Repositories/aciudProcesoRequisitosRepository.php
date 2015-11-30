@@ -14,4 +14,15 @@ class aciudProcesoRequisitosRepository extends  Repository  {
     }
 
 
+    public function buscar_todos_dt($id_proceso)
+    {
+        return \DB::table('aciud_proceso_requisitos')
+            ->where('id_proceso', $id_proceso)
+            ->select(
+                'id_requisitos',
+                'id_proceso',
+                'nombre',
+                'observaciones'
+            );
+    }
 }

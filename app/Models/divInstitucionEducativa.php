@@ -10,6 +10,7 @@ class divInstitucionEducativa extends Model {
 
     protected $table = 'div_institucion_educativa';
     protected $primaryKey = 'id_institucion_educativa';
+    protected $fillable = ['id_circuito', 'codigo_amie', 'denominacion', 'id_parroquia'];
     public $timestamps = false;
 
 
@@ -19,11 +20,7 @@ class divInstitucionEducativa extends Model {
     }
 
 
-    //dependencias
-    public function estado()
-    {
-        return $this->belongsTo('App\Models\divEstadoInstitucionEducativa', 'id_estado_institucion_educativa');
-    }
+
 
     public function circuito()
     {
@@ -40,10 +37,7 @@ class divInstitucionEducativa extends Model {
         return $this->hasMany('App\Models\aciudUsuario', 'id_institucion_educativa');
     }
 
-    public function idprincipal()
-    {
-        return $this->belongsTo('App\Models\divInstitucionEducativa', 'id_institucion_educativa_pertenece', 'id_institucion_educativa');
-    }
+
 }
 
 

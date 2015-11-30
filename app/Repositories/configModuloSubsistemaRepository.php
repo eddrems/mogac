@@ -14,4 +14,16 @@ class configModuloSubsistemaRepository extends  Repository  {
     }
 
 
+    public function buscar_todos_dt()
+    {
+        return \DB::table('config_modulosubsistema')
+            ->select(
+                'id_subsistema',
+                'descripcion',
+                'esta_activo',
+                'orden',
+                'icon'
+            );
+    }
+
 }

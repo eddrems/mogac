@@ -9,6 +9,7 @@ class configModulo extends Model {
 
     protected $table = 'config_modulo';
     protected $primaryKey = 'id_modulo';
+    protected $fillable = ['id_modulo', 'id_subsistema', 'orden', 'descripcion', 'texto', 'accion', 'controlador', 'icon'];
     public $timestamps = false;
 
 
@@ -23,6 +24,14 @@ class configModulo extends Model {
         return $this->hasMany('App\Models\configRolModulo', 'id_modulo');
     }
 
+
+    public function getagrupadorAttribute()
+    {
+
+        $agrupador = configModuloSubsistema::find($this->attributes['id_subsistema']);
+
+        return $agrupador->descripcion;
+    }
 
 }
 

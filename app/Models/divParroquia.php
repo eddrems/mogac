@@ -10,6 +10,7 @@ class divParroquia extends Model {
 
     protected $table = 'div_parroquia';
     protected $primaryKey = 'id_parroquia';
+    protected $fillable = ['id_parroquia', 'id_ciudad','denominacion','codigo'];
     public $timestamps = false;
 
 

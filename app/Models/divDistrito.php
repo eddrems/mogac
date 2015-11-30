@@ -21,6 +21,8 @@ class divDistrito extends Model {
     }
 
 
+
+
     public function funcionarios()
     {
         return $this->hasMany('App\Models\rrhhFuncionario', 'id_distrito');

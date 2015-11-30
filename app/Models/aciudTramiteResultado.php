@@ -9,18 +9,24 @@ class aciudTramiteResultado extends Model {
 
     protected $table = 'aciud_tramite_resultado';
     protected $primaryKey = 'id_tramite_resultado';
+    protected $fillable = ['id_tramite_resultado', 'denominacion', 'requiere_observaciones'];
     public $timestamps = false;
 
 
     //dependencias
-    public function tramite()
+    public function tramites()
     {
-        return $this->belongsTo('App\Models\aciudTramite', 'id_tramite_resultado');
+        return $this->hasMany('App\Models\aciudTramite', 'id_tramite_resultado');
     }
+
+    //
+
+
 
 
 
 }
+
 
 
 

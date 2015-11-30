@@ -10,6 +10,7 @@ class divCircuito extends Model {
 
     protected $table = 'div_circuito';
     protected $primaryKey = 'id_circuito';
+    protected $fillable = ['id_distrito','codigoSemplades','composicion'];
     public $timestamps = false;
 
 
@@ -26,6 +27,13 @@ class divCircuito extends Model {
     {
         return $this->attributes['App\Models\codigoSemplades'].' / '.$this->attributes['composicion'];
     }
+
+
+    public function getdistritoAttribute()
+    {
+        return divDistrito::find($this->attributes['id_distrito'])->denominacion;
+    }
+
 
 
 }

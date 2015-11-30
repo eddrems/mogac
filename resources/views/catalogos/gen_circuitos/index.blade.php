@@ -17,7 +17,7 @@
 
     <section class="vbox">
         <header class="header b-b bg-white hidden-print">
-            <a href="{{ url('catalogos/distritos/crear') }}" class="btn btn-primary btn-sm  pull-right" style="margin-right:5px; " >Nuevo Registro</a>
+            <a href="{{ url('catalogos/circuitos/crear') }}" class="btn btn-primary btn-sm  pull-right" style="margin-right:5px; " >Nuevo Registro</a>
             <p style="font-size: medium;"><i class="fa fa-database"></i> Catálogos / <strong>Circuitos</strong></p>
         </header>
 
