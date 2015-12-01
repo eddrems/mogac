@@ -239,6 +239,18 @@ Route::group(['middleware' => ['access_control:34']], function() {
     Route::get('catalogos/ies/eliminar/{id}', 'Catalogos\GeneralesInsticionesEducativasController@eliminar');
     Route::post('catalogos/ies/grabar_eliminar', 'Catalogos\GeneralesInsticionesEducativasController@grabar_eliminar');
 });
+//tabla: rrhh_cargo
+Route::group(['middleware' => ['access_control:34']], function() {
+
+    Route::get('catalogos/cargos_funcionarios', 'Catalogos\PersonalCargoController@index');
+    Route::get('catalogos/cargos_funcionarios/buscar_registros_dt','Catalogos\PersonalCargoController@buscar_registros_dt');
+    Route::get('catalogos/cargos_funcionarios/crear', 'Catalogos\PersonalCargoController@crear');
+    Route::post('catalogos/cargos_funcionarios/grabar_nuevo', 'Catalogos\PersonalCargoController@grabar_nuevo');
+    Route::get('catalogos/cargos_funcionarios/editar/{id}', 'Catalogos\PersonalCargoController@editar');
+    Route::post('catalogos/cargos_funcionarios/grabar_actualizar', 'Catalogos\PersonalCargoController@grabar_actualizar');
+    Route::get('catalogos/cargos_funcionarios/eliminar/{id}', 'Catalogos\PersonalCargoController@eliminar');
+    Route::post('catalogos/cargos_funcionarios/grabar_eliminar', 'Catalogos\PersonalCargoController@grabar_eliminar');
+});
 
 
 
