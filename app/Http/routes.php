@@ -251,6 +251,18 @@ Route::group(['middleware' => ['access_control:34']], function() {
     Route::get('catalogos/cargos_funcionarios/eliminar/{id}', 'Catalogos\PersonalCargoController@eliminar');
     Route::post('catalogos/cargos_funcionarios/grabar_eliminar', 'Catalogos\PersonalCargoController@grabar_eliminar');
 });
+//tabla: rrhh_departamento
+Route::group(['middleware' => ['access_control:34']], function() {
+
+    Route::get('catalogos/departamentos_funcionarios', 'Catalogos\PersonalDepartamentosController@index');
+    Route::get('catalogos/departamentos_funcionarios/buscar_registros_dt','Catalogos\PersonalDepartamentosController@buscar_registros_dt');
+    Route::get('catalogos/departamentos_funcionarios/crear', 'Catalogos\PersonalDepartamentosController@crear');
+    Route::post('catalogos/departamentos_funcionarios/grabar_nuevo', 'Catalogos\PersonalDepartamentosController@grabar_nuevo');
+    Route::get('catalogos/departamentos_funcionarios/editar/{id}', 'Catalogos\PersonalDepartamentosController@editar');
+    Route::post('catalogos/departamentos_funcionarios/grabar_actualizar', 'Catalogos\PersonalDepartamentosController@grabar_actualizar');
+    Route::get('catalogos/departamentos_funcionarios/eliminar/{id}', 'Catalogos\PersonalDepartamentosController@eliminar');
+    Route::post('catalogos/departamentos_funcionarios/grabar_eliminar', 'Catalogos\PersonalDepartamentosController@grabar_eliminar');
+});
 
 
 
