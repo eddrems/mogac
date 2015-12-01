@@ -15,8 +15,8 @@
 
     <section class="vbox">
         <header class="header b-b bg-white hidden-print">
-            <a href="{{ URL::to('catalogos/distritos') }}" class="btn btn-default btn-sm  pull-right" style="margin-right:5px; "><i class="icon-share-alt icon-black"></i> Cancelar</a>
-            <p style="font-size: medium;"><i class="fa fa-database"></i> Catálogos / <strong>Distritos</strong> / Eliminar </p>
+            <a href="{{ URL::to('catalogos/ies') }}" class="btn btn-default btn-sm  pull-right" style="margin-right:5px; "><i class="icon-share-alt icon-black"></i> Cancelar</a>
+            <p style="font-size: medium;"><i class="fa fa-database"></i> Catálogos / <strong>IEs</strong>  / Eliminar </p>
         </header>
 
         <section class="scrollable wrapper">
@@ -28,14 +28,14 @@
                         <div class="panel-body">
                             <div class="bs-example form-horizontal">
 
-                                {!! Form::open(array('url' => 'catalogos/distritos/grabar_eliminar', 'id' => 'frmMain')) !!}
-                                {!! Form::hidden('id', Crypt::encrypt($registro->id_distrito)) !!}
+                                {!! Form::open(array('url' => 'catalogos/ies/grabar_eliminar', 'id' => 'frmMain')) !!}
+                                {!! Form::hidden('id', Crypt::encrypt($registro->id_institucion_educativa)) !!}
 
                                 <div class="form-group">
                                     <label class="col-lg-12 ">
                                         <div class="col-lg-12">
                                             <h5>Desea eliminar de forma permanente el registro:</h5>
-                                            <h3 style="margin-top: 0px;"><strong>{!! $registro->denominacion_institucional !!}</strong></h3>
+                                            <h3 style="margin-top: 0px;"><strong>{!! $registro->denominacion !!}</strong></h3>
                                             <br>
                                             <button type="sumbit" class="btn btn-danger btn-lg btn-block"><i class="fa fa-trash-o pull-right"></i> Confirmar Eliminación</button>
                                         </div>

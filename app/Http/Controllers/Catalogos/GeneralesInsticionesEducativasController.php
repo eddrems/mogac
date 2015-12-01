@@ -111,16 +111,13 @@ class GeneralesInsticionesEducativasController extends Controller {
     {
         $registro = $this->repo_main->find(Crypt::decrypt($id));
         $parroquias = $this->repo_parroquias->bucar_parroquias_ruta_completa();
-        $circuitos = $this->repo_circuitos->generar_lista_con_agrupador_distritos();
-        $zonas = $this->repo_zonas->pushCriteria(new ZonasOrdenAsc())->lists('denominacion_institucional', 'id_zona');
-
-
-        return view('catalogos.gen_ies.editar', ['parroquias' => $parroquias, 'circuitos' => $circuitos, 'zonas' => $zonas])->with('registro', $registro);
+        $circuitos = $this->repo_circuitos->generar_lista_con_agrupador_distritos($registro->id_circuito);
+        return view('catalogos.gen_ies.editar', ['parroquias' => $parroquias, 'circuitos' => $circuitos])->with('registro', $registro);
     }
 
-    public function grabar_actualizar(Requests\Catalogos\div_distritoRequest  $request)
+    public function grabar_actualizar(Requests\Catalogos\div_institucion_educativaRequest  $request)
     {
-        if($this->repo_main->update($request->only(['id_zona', 'codigoSemplades', 'denominacion', 'denominacion_institucional', 'composicion', 'id_parroquia', 'id_circuito', 'direccion']), Crypt::decrypt($request->id), 'id_distrito'))
+        if($this->repo_main->update($request->only(['id_circuito', 'codigo_amie', 'denominacion', 'id_parroquia']), Crypt::decrypt($request->id), 'id_institucion_educativa'))
         {
             Toastr::success($this->repo_main->mensajes_actualizacion, $title = 'Confirmación:', $options = []);
             return redirect('catalogos/ies/editar'.'/'.$request->id);
@@ -128,7 +125,7 @@ class GeneralesInsticionesEducativasController extends Controller {
         else
         {
             Toastr::error('Ha ocurrido un error', $title = 'Error:', $options = []);
-            return redirect('catalogos/ies/editar'.'/'.$request->id)->withInput();
+            return redirect('catalogos/ies/editar' . '/' . $request->id)->withInput();
         }
     }
 
