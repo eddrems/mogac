@@ -14,6 +14,10 @@
     <meta property="og:url" content="http://atencionciudadana.educacion.gob.ec/" />
     <meta property="og:description" content="El Módulo de Gestión de Atención Ciudadana es una aplicación web que brinda a las plataformas de Atención Ciudadana la facilidad de mantener el control local en tiempo real sobre todos los requerimientos que ingresan por parte de los ciudadanos, a través de varios módulos que permiten la generación de turnos, registro de requerimientos (trámites), reportes, respuestas y archivo de los trámites dentro en cada una de las Direcciones Distritales del Ministerio de Educación." />
 
+    @section('Metas')
+
+    @show
+
     <link rel="stylesheet" href="{{ asset('frontend/assets/todo/css/bootstrap.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/todo/css/animate.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/todo/css/font-awesome.min.css') }}" type="text/css" />
@@ -152,6 +156,17 @@
 
                     @yield('content')
 
+                    <div class="modal" id="loadingIndicator" tabindex="-1" data-backdrop="static" role="dialog">
+                        <div class="modal-dialog" >
+                            <div class="modal-content">
+                                <div class="modal-body" style="text-align:center; ">
+                                    Cargarndo...<br /><strong>Gracias por su gentil espera!</strong><br><br>
+                                    <img src="{{ asset('frontend/img_ui/page-loader.gif') }}" style="width: 50px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Loading Panel -->
                 </section>
             </section>
         </section>
@@ -161,8 +176,6 @@
 
 
     </section>
-
-
 
 
 

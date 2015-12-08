@@ -3,14 +3,14 @@
 use Bosnadev\Repositories\Eloquent\Repository;
 
 
-class aciudAudioRepository extends  Repository  {
+class rrhhTipoIdentificacionRepository extends  Repository  {
 
 
 
 
     function model()
     {
-        return 'App\Models\aciudAudio';
+        return 'App\Models\rrhhTipoIdentificacion';
     }
 
 

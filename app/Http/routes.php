@@ -263,7 +263,14 @@ Route::group(['middleware' => ['access_control:34']], function() {
     Route::get('catalogos/departamentos_funcionarios/eliminar/{id}', 'Catalogos\PersonalDepartamentosController@eliminar');
     Route::post('catalogos/departamentos_funcionarios/grabar_eliminar', 'Catalogos\PersonalDepartamentosController@grabar_eliminar');
 });
+//tabla: rrhh_funcionario
+Route::group(['middleware' => ['access_control:34']], function() {
 
+    Route::get('usuarios/gestion', 'Usuarios\GestionUsuariosController@index');
+    Route::get('usuarios/gestion/buscar_registros_dt/{criterio}','Usuarios\GestionUsuariosController@buscar_registros_dt');
+    Route::get('usuarios/gestion/buscar_dependencias_nu', 'Usuarios\GestionUsuariosController@buscar_dependencias_nu');
+    Route::get('usuarios/gestion/buscar_dependencias_nu_por_tipo_funcionario/{id_tipo_funcionario}', 'Usuarios\GestionUsuariosController@buscar_dependencias_nu_por_tipo_funcionario');
+});
 
 
 

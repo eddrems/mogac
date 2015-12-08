@@ -16,6 +16,40 @@ class rrhhFuncionarioRepository extends  Repository  {
     }
 
 
+
+
+    public function buscar_todos_dt($criterio)
+    {
+        return \DB::table('rrhh_funcionario')
+            ->join('rrhh_funcionario_estado', 'rrhh_funcionario.id_funcionario_estado', '=', 'rrhh_funcionario_estado.id_funcionario_estado')
+            ->join('rrhh_departamento', 'rrhh_funcionario.id_departamento', '=', 'rrhh_departamento.id_departamento')
+            ->join('rrhh_cargo', 'rrhh_funcionario.id_cargo', '=', 'rrhh_cargo.id_cargo')
+            ->leftJoin('div_distrito', 'rrhh_funcionario.id_distrito', '=', 'div_distrito.id_distrito')
+            ->leftJoin('div_zona', 'rrhh_funcionario.id_zona', '=', 'div_zona.id_zona')
+            ->where('rrhh_funcionario.apellidos','like', '%' . $criterio . '%')
+            ->orWhere('rrhh_funcionario.nombres','like', '%' . $criterio . '%')
+            ->orWhere('rrhh_funcionario.identificacion', $criterio)
+            ->orWhere('div_distrito.codigoSemplades', $criterio)
+            ->orWhere('div_zona.codigoSemplades', $criterio)
+            ->select(
+                'rrhh_funcionario.id_funcionario',
+                'rrhh_funcionario.identificacion',
+                'rrhh_funcionario.apellidos',
+                'rrhh_funcionario.nombres',
+                'rrhh_funcionario_estado.denominacion as estado',
+                'rrhh_departamento.denominacion as departamento',
+                'rrhh_cargo.denominacion as cargo',
+                'div_distrito.denominacion_institucional as distrito',
+                'div_zona.denominacion_institucional as zona',
+                'rrhh_funcionario.id_tipo_funcionario'
+            )->get();
+
+    }
+
+
+
+
+
     public function iniciar_sesion($identificacion, $clave_acceso)
     {
 
@@ -64,8 +98,6 @@ class rrhhFuncionarioRepository extends  Repository  {
         }
 
     }
-
-
 
     public function generar_nueva_clave($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

@@ -12,7 +12,8 @@
         "bosnadev/repositories": "0.*",
         "chumper/datatable": "l5-dev as 2.3",
         "dinesh/barcode": "dev-master",
-        "tecnick.com/tcpdf": "6.0.*"
+        "tecnick.com/tcpdf": "6.0.*",
+        "doctrine/dbal": "~2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
