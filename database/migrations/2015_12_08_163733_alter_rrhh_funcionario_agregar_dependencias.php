@@ -40,6 +40,8 @@ class AlterRrhhFuncionarioAgregarDependencias extends Migration
             $table->dropColumn('requiere_cambio_clave');
             $table->dropColumn('requiere_actualizar_datos_contacto');
 
+            $table->foreign('id_persona')->references('id_persona')->on('rrhh_persona');
+
         });
 
     }

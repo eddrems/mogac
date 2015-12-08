@@ -11,6 +11,9 @@ class migrar_rrhh_funcionario_a_rrhh_persona extends Seeder
      */
     public function run()
     {
+        DB::table('rrhh_funcionario')
+            ->where('id_funcionario', 4876)
+            ->update(['identificacion' => '0908948110-']);
 
         $funcionarios_a_migrar =DB::table('rrhh_funcionario')
             ->whereNull('migrado')

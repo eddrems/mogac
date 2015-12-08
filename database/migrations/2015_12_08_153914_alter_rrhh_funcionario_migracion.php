@@ -12,6 +12,9 @@ class AlterRrhhFuncionarioMigracion extends Migration
      */
     public function up()
     {
+
+        DB::statement('alter table rrhh_persona convert to character set utf8 collate utf8_general_ci;');
+
         Schema::table('rrhh_funcionario', function (Blueprint $table) {
             $table->tinyInteger('migrado')->nullable();
             $table->bigInteger('id_persona')->nullable();
